@@ -7,7 +7,7 @@ app = FastAPI()
 def youtube_search(query: str, max_results: int = 5):
     try:
         videos_search = VideosSearch(query, limit=max_results * 2)
-        results = []
+        videourls = []
 
         for video in videos_search.result()['result']:
             duration = video.get('duration', '')
@@ -20,7 +20,7 @@ def youtube_search(query: str, max_results: int = 5):
                 elif len(time_parts) == 2:
                     total_seconds = time_parts[0] * 60 + time_parts[1]
             if total_seconds > 60:
-                results.append({
+                videourls.append({
                     "videoname": video['title'],
                     "videourl": video['link'],
                     "videoimage": video['thumbnails'][0]['url']
