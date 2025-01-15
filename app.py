@@ -21,9 +21,9 @@ def youtube_search(query: str, max_results: int = 5):
                     total_seconds = time_parts[0] * 60 + time_parts[1]
             if total_seconds > 60:
                 results.append({
-                    "title": video['title'],
-                    "link": video['link'],
-                    "thumbnail": video['thumbnails'][0]['url']
+                    "videoname": video['title'],
+                    "videourl": video['link'],
+                    "videoimage": video['thumbnails'][0]['url']
                 })
                 if len(results) >= max_results:
                     break
